@@ -1,0 +1,14 @@
+# This is an example, be sure to create a copy of this and rename it to just config.js
+
+config = {
+    auth: {
+        okta : {
+            domain: "https://something.okta.com",
+            clientId: "randomalphaneumericstring",
+            clientSecret: "randomalphaneumericstring",
+            clientToken: "randomalphaneumericstring"
+        }
+    }
+}
+
+module.exports = { config };
