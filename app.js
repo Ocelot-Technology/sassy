@@ -7,6 +7,9 @@ var session = require('express-session');
 const config = require("./config")
 const auth = require("./auth");
 
+const addUser = require("./middleware/add-user-data");
+const loginRequired = require("./middleware/login-required");
+
 const dashboardRouter = require("./routes/dashboard");
 const publicRouter = require("./routes/public");
 const usersRouter = require("./routes/users");
@@ -28,21 +31,12 @@ app.use(session({
   saveUninitialized: false
 }));
 app.use(auth.oidc.router);
-app.use(auth.oidc.ensureAuthenticated(), (req, res, next) => {
-  auth.oktaClient.getUser(req.userContext.userinfo.sub)
-    .then(user => {
-      req.user = user;
-      res.locals.user = user;
-      next();
-    }).catch(err => {
-      next(err);
-    });
-});
+app.use(addUser);
 
 app.use('/', publicRouter);
-app.use('/dashboard', auth.oidc.ensureAuthenticated(), dashboardRouter);
+app.use('/dashboard', loginRequired, dashboardRouter);
 app.use('/users', usersRouter);
-app.use('/test', auth.oidc.ensureAuthenticated(), testRouter);
+app.use('/test', loginRequired, testRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
