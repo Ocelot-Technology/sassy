@@ -2,8 +2,8 @@
 SaaS Platform meant to get started with a SaaS style product straight away. The goal is to take care of most of the boilerplate surrounding a SaaS and make it easier to actually build something awesome.
 
 What this takes care of:
-1) Basic front-end.
-2) User Management
+1) Basic front-end
+2) User Management (Powered by Okta)
 
 ## Requirements
 
