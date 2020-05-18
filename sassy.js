@@ -10,6 +10,7 @@ const auth = require("./auth");
 const addUser = require("./middleware/add-user-data");
 const loginRequired = require("./middleware/login-required");
 
+const appRouter = require("./routes/app");
 const dashboardRouter = require("./routes/dashboard");
 const publicRouter = require("./routes/public");
 const usersRouter = require("./routes/users");
@@ -18,8 +19,10 @@ const testRouter = require("./routes/test");
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', [path.join(__dirname, 'views'),
+                  path.join(__dirname, 'app/views')]);
 app.set('view engine', 'pug');
+app.set('view engine', 'html');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -36,6 +39,7 @@ app.use(addUser);
 app.use('/', publicRouter);
 app.use('/dashboard', loginRequired, dashboardRouter);
 app.use('/users', usersRouter);
+app.use('/app', appRouter);
 app.use('/test', loginRequired, testRouter);
 
 // catch 404 and forward to error handler
