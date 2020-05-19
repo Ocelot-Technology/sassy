@@ -5,7 +5,7 @@ const router = express.Router();
 
 // Display the app
 router.get("/", (req, res) => {
-    res.render("../app/index.html");
+    res.render("../../app/index.html");
 });
 
 
