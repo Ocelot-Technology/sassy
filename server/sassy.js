@@ -8,13 +8,9 @@ const config = require("./config")
 const auth = require("./auth");
 
 const addUser = require("./middleware/add-user-data");
-const loginRequired = require("./middleware/login-required");
 
 const appRouter = require("./routes/app");
-const dashboardRouter = require("./routes/dashboard");
-const publicRouter = require("./routes/public");
-const usersRouter = require("./routes/users");
-const testRouter = require("./routes/test");
+const platformRouter = require("./routes/platform");
 
 var app = express();
 
@@ -25,7 +21,6 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: config.auth.okta.clientSecret,
   resave: true,
@@ -34,11 +29,15 @@ app.use(session({
 app.use(auth.oidc.router);
 app.use(addUser);
 
-app.use('/', publicRouter);
-app.use('/dashboard', loginRequired, dashboardRouter);
-app.use('/users', usersRouter);
+var options = {
+  index: false
+}
+
+app.use(express.static(path.join(__dirname, '../public'), options));
+app.use(express.static(path.join(__dirname, '../app/public'), options));
+
+app.use('/', platformRouter);
 app.use('/app', appRouter);
-app.use('/test', loginRequired, testRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
