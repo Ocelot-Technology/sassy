@@ -34,7 +34,7 @@ var options = {
 }
 
 app.use(express.static(path.join(__dirname, '../public'), options));
-app.use(express.static(config.app.public), options);
+app.use(express.static(config.app.public, options));
 
 app.use('/', platformRouter);
 app.use('/app', appRouter);
