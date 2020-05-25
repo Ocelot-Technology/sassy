@@ -4,7 +4,7 @@ var path = require('path');
 var logger = require('morgan');
 var session = require('express-session');
 
-const config = require("../config")
+const config = require("../sassy.config")
 const auth = require("./auth");
 
 const addUser = require("./middleware/add-user-data");
@@ -34,7 +34,7 @@ var options = {
 }
 
 app.use(express.static(path.join(__dirname, '../public'), options));
-app.use(express.static(path.join(__dirname, '../app/public'), options));
+app.use(express.static(config.app.public), options);
 
 app.use('/', platformRouter);
 app.use('/app', appRouter);

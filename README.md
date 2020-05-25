@@ -14,7 +14,7 @@ What this currently takes care of:
 1. Clone
 2. Run `npm install`.
 3. Sign up for an [Okta developer account](https://developer.okta.com/).
-4. Make a copy of `config.js.example` and put real values in there for the secrets. See the file for more details on where to find each value.
+4. Make a copy of `sassy.config.js.example`, rename it to `sassy.config.js` and put real values in there for the secrets. See the file for more details on where to find each value.
 5. Drop your app (angular, react, vue, etc) inside the 'app' folder. Make sure the entry-point is configured correctly. 
 6. run `npm start`.
 
