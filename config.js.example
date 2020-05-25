@@ -2,7 +2,7 @@
 // See the individual table data entry comments for more information on where they come from / what they're for.
 
 config = {
-    auth: {
+    user_management: {
         okta : {
             domain: "https://something.okta.com", // See https://developer.okta.com/docs/guides/find-your-domain/overview/
             clientId: "IXSenLxPi8kQVexample1234", // See https://developer.okta.com/docs/guides/find-your-app-credentials/overview/
@@ -13,7 +13,11 @@ config = {
     app: {
         // entry_point: Path to the entry point file for the app, relative to this file.
         //   Note: MUST resolve the path to an absolute path in order for express to serve it correctly.
-        entry_point: path.resolve(path.join(__dirname) + '/../app/public/index.html') 
+        entry_point: path.resolve(path.join(__dirname) + '/app/public/index.html'),
+
+        // public: Path to a public folder for all the app's static files.
+        //   Note: This path is used AFTER the common public folder at `./public`, which means any file found there will be served first
+        public: path.resolve(path.join(__dirname) + '/app/public')
     }
 }
 

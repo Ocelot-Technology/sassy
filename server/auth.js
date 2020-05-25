@@ -1,7 +1,7 @@
 var okta = require("@okta/okta-sdk-nodejs");
 var oidcMiddleware = require("@okta/oidc-middleware");
 
-const config = require("./config")
+const config = require("../config")
 
 var oktaClient = new okta.Client({
     orgUrl: config.user_management.okta.domain,

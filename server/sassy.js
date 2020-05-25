@@ -4,7 +4,7 @@ var path = require('path');
 var logger = require('morgan');
 var session = require('express-session');
 
-const config = require("./config")
+const config = require("../config")
 const auth = require("./auth");
 
 const addUser = require("./middleware/add-user-data");
