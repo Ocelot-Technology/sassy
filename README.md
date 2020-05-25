@@ -23,7 +23,10 @@ See what you've got at `localhost:3000` in your browser
 
 There are example web apps for different front-end frameworks in branches in this repo. They have a basic web app setup so you can get started on your app asap, with as little friction as possible. Look at the following branches on the repo for details:
 
-### Vue: vue-example
-### React: (WIP) react-example
-### Angular: (WIP) angular-example
+### Vue:
+
+Look at branch `vue-example`.
+
+### React: (WIP)
+### Angular: (WIP)
 
