@@ -22,7 +22,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
-  secret: config.auth.okta.clientSecret,
+  secret: config.user_management.okta.clientSecret,
   resave: true,
   saveUninitialized: false
 }));

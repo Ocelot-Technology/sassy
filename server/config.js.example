@@ -1,13 +1,19 @@
-# This is an example, be sure to create a copy of this and rename it to just config.js
+// This is an example, create a copy of this and rename it to `config.js`
+// See the individual table data entry comments for more information on where they come from / what they're for.
 
 config = {
     auth: {
         okta : {
             domain: "https://something.okta.com", // See https://developer.okta.com/docs/guides/find-your-domain/overview/
-            clientId: "randomalphaneumericstring", // See https://developer.okta.com/docs/guides/find-your-app-credentials/overview/
-            clientSecret: "randomalphaneumericstring", // See https://developer.okta.com/docs/guides/find-your-app-credentials/overview/
-            clientToken: "randomalphaneumericstring" // See https://developer.okta.com/docs/guides/create-an-api-token/create-the-token/
+            clientId: "IXSenLxPi8kQVexample1234", // See https://developer.okta.com/docs/guides/find-your-app-credentials/overview/
+            clientSecret: "8Jbsy9rBETG9XB_bvKhQD9pM4Dexample1234", // See https://developer.okta.com/docs/guides/find-your-app-credentials/overview/
+            clientToken: "8Jbsy9rBETG9XB-bvKhQD9pM4Dexample1234" // See https://developer.okta.com/docs/guides/create-an-api-token/create-the-token/
         }
+    },
+    app: {
+        // entry_point: Path to the entry point file for the app, relative to this file.
+        //   Note: MUST resolve the path to an absolute path in order for express to serve it correctly.
+        entry_point: path.resolve(path.join(__dirname) + '/../app/public/index.html') 
     }
 }
 
